@@ -64,10 +64,12 @@ export default class CustomTag extends React.Component {
       return(
         <Tag 
             style={{
+              ...this.props.style,
                 background: this.generateBackgroundColor(), 
                 color: this.props.color, 
                 borderColor: this.generateBorderColor(),
-                }}
+                }
+              }
         >
             {this.props.children}
         </Tag>

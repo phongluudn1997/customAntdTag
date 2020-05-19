@@ -1,19 +1,70 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import CustomTag from './customTag'
 import 'antd/dist/antd.css';
+import jsPDF from 'jspdf'
+import 'jspdf-autotable'
 
 function App() {
+  const handleExportPDF = () => {
+    const doc = new jsPDF();
+    doc.autoTable(generateSample())
+    doc.save('a.pdf')
+  }
+
+  const generateSample = () => {
+    return {
+      rowPageBreak: 'avoid',
+      head: [['Allocation', 'Score', 'Result'],
+            ['adfa', 'fsadf']
+              ],
+      body: [
+        [{content: 'Civil Worker', colSpan: 3, styles: {fillColor: '#c4c4c4'}}],
+        ['Luu Huynh Phong', '10', 'Passed'],
+        ['Van Huynh Thi Thanh', '12', 'Passed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+        ['An Nguyen Quang', '7', 'Failed'],
+      ]
+    }
+  }
+  
   return (
     <div className="App">
-      <CustomTag color='#68d39a'>Somethings</CustomTag>
-      <CustomTag color='#fa541c'>Somethings</CustomTag>
-      <CustomTag color='#d4b106'>Somethings</CustomTag>
-      <CustomTag color='#fcffe6'>Somethings</CustomTag>
-      <CustomTag color='#52c41a'>Somethings</CustomTag>
-      <CustomTag color='#13c2c2'>Somethings</CustomTag>
-      <CustomTag color='#722ed1'>Somethings</CustomTag>
+      <button onClick={handleExportPDF}>Click me</button>
     </div>
   );
 }
